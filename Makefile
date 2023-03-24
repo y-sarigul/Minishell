@@ -58,15 +58,15 @@ $(NAME): Readline
 	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
 
 Readline:
-	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline
-	# @./lib/readline/configure
+	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline/readline
 
 
 clean: fclean
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf ./lib/readline/
+	@rm -rf ./lib/readline/readline
+	@find ./lib/readline/ -type f -not \( -name 'Makefile' \) -delete
 
 re: fclean all
 
