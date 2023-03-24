@@ -10,43 +10,67 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME				:=  
+NAME				:= minishell 
 
-OBJDIR			:= obj
-LIBFT				:= $(OBJDIR)/libft.a
-UTILS 			:= $(OBJEDIR)/utils.a
-CC					:= cc
+LIBFT				:= ./lib/libft/ft_atoi.c\
+							 ./lib/libft/ft_bzero.c\
+							 ./lib/libft/ft_calloc.c\
+							 ./lib/libft/ft_isalnum.c\
+							 ./lib/libft/ft_isalpha.c\
+							 ./lib/libft/ft_isascii.c\
+							 ./lib/libft/ft_isdigit.c\
+							 ./lib/libft/ft_isprint.c\
+							 ./lib/libft/ft_itoa.c\
+							 ./lib/libft/ft_memchr.c\
+							 ./lib/libft/ft_memcmp.c\
+							 ./lib/libft/ft_memcpy.c\
+							 ./lib/libft/ft_memmove.c\
+							 ./lib/libft/ft_memset.c\
+							 ./lib/libft/ft_putchar_fd.c\
+							 ./lib/libft/ft_putendl_fd.c\
+							 ./lib/libft/ft_putnbr_fd.c\
+							 ./lib/libft/ft_putstr_fd.c\
+							 ./lib/libft/ft_split.c\
+							 ./lib/libft/ft_strchr.c\
+							 ./lib/libft/ft_strcmp.c\
+							 ./lib/libft/ft_strdup.c\
+							 ./lib/libft/ft_striteri.c\
+							 ./lib/libft/ft_strjoin.c\
+							 ./lib/libft/ft_strlcat.c\
+							 ./lib/libft/ft_strlcpy.c\
+							 ./lib/libft/ft_strlen.c\
+							 ./lib/libft/ft_strmapi.c\
+							 ./lib/libft/ft_strncmp.c\
+							 ./lib/libft/ft_strnstr.c\
+							 ./lib/libft/ft_strrchr.c\
+							 ./lib/libft/ft_strtrim.c\
+							 ./lib/libft/ft_substr.c\
+							 ./lib/libft/ft_tolower.c\
+							 ./lib/libft/ft_toupper.c\
+
+SRC	 			  := ./src/init/mshell_loop.c\
+
 CFLAGS			:= -Wall -Wextra -Werror -I ./inc
-
-$(NAME): $(OBJDIR) $(LIBFT) #$(UTILS)
-	@ar -rcs $(NAME) $(OBJDIR)/*.o 
-
-$(OBJDIR):
-	@echo "Creating objects file"
-	@mkdir -p $(OBJDIR)
-
-$(LIBFT):
-	@echo "Libft creating"
-	@make -C ./lib/libft
-
-$(UTILS):
-	@echo "Utils creating"
-	@make -C src/utils 
 
 all: $(NAME)
 
-clean:
-	@rm -f $(OBJDIR)/*.o
+$(NAME): Readline
+	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
+
+Readline:
+	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline
+	# @./lib/readline/configure
+
+
+clean: fclean
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf $(OBJDIR)
+	@rm -rf ./lib/readline/
 
 re: fclean all
 
 m:
-	@gcc
-	@./main 
-	@rm main
+	./minishell
 
 .PHONY: all re clean fclean m
