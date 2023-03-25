@@ -49,13 +49,15 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 							 ./lib/libft/ft_toupper.c\
 
 SRC	 			  := ./src/init/mshell_loop.c\
+							 ./src/parse/ft_parse_pwd.c\
 
 CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 
 all: $(NAME)
 
-$(NAME): Readline
+$(NAME): #Readline
 	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
+	@/.minishell
 
 Readline:
 	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline/readline
