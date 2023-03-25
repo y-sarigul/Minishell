@@ -57,7 +57,6 @@ all: $(NAME)
 
 $(NAME): #Readline
 	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
-	@/.minishell
 
 Readline:
 	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline/readline
@@ -70,9 +69,9 @@ fclean: clean
 	@rm -rf ./lib/readline/readline
 	@find ./lib/readline/ -type f -not \( -name 'Makefile' \) -delete
 
-re: fclean all
+re: fclean all m
 
 m:
-	./minishell
+	@./minishell
 
 .PHONY: all re clean fclean m

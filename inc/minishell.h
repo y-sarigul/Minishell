@@ -8,7 +8,7 @@
 # include "libft.h"
 
 typedef struct s_pwd{
-    char **line;
+    char *line;
 }   t_pwd;
 
 /********init********/

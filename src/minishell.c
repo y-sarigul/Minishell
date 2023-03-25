@@ -11,5 +11,6 @@ int main (int argc, char **argv, char **envp)
     // Return value is a line.
     // Its will show us where we are
     ft_parse_pwd(&pwd, envp);
+    printf("%s\n", pwd -> line);
     return 0;
 }
