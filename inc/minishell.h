@@ -7,12 +7,17 @@
 # include <stdlib.h>
 # include "libft.h"
 
+
 typedef struct s_pwd{
     char *line;
 }   t_pwd;
 
+typedef struct s_shell{
+    t_pwd pwd;
+} t_shell;
+
 /********init********/
-void init_shell(char **evnp);
-void ft_parse_pwd(t_pwd **pwd, char **envp);
+void   ft_mshell_loop(t_shell *shell);
+void ft_parse_pwd(t_shell **shell, char **envp);
 
 #endif
