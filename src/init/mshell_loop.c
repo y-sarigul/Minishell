@@ -13,6 +13,7 @@ static void get_lines(t_shell **shell)
 }
 
 // this fuction is wrong
+// not
 static void ft_get_history_ten(t_shell **shell)
 {
     size_t i;
