@@ -26,4 +26,9 @@ typedef struct s_shell{
 void   ft_mshell_loop(t_shell **shell, char **envp);
 void ft_parse_pwd(t_shell **shell, char **envp);
 
+/*****history.c*****/
+void get_lines(t_shell **shell);
+void ft_get_history(t_shell **shell, const char *line);
+
+
 #endif
