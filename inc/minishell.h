@@ -8,6 +8,10 @@
 # include "libft.h"
 # include <readline/readline.h>
 
+typedef struct s_cmd{
+    char *line;
+    char **history;
+} t_cmd;
 
 typedef struct s_pwd{
     char *line;
@@ -15,10 +19,11 @@ typedef struct s_pwd{
 
 typedef struct s_shell{
     t_pwd pwd;
+    t_cmd cmd;
 } t_shell;
 
 /********init********/
-void   ft_mshell_loop(t_shell *shell);
+void   ft_mshell_loop(t_shell **shell, char **envp);
 void ft_parse_pwd(t_shell **shell, char **envp);
 
 #endif
