@@ -1,6 +1,7 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
+// Print shell -> cmd.history
 static void get_lines(t_shell **shell)
 {
     int i;
@@ -12,21 +13,21 @@ static void get_lines(t_shell **shell)
     }
 }
 
-// this fuction is wrong
-// not
+// Deletes the first line when history is full
 static void ft_get_history_ten(t_shell **shell)
 {
     size_t i;
 
     i = 0;
-    while (i <= 10){
-        if (i == 10)
-            (*shell)->cmd.history[10] = 0;
+    while (i <= 9){
+        if (i == 9)
+            (*shell)->cmd.history[i] = 0;
         (*shell)->cmd.history[i] = (*shell)->cmd.history[i + 1];
         i++;
     }
 }
 
+//We write the incoming line in the struct in a sequential manner.
 static void ft_get_history(t_shell **shell, const char *line)
 {
     size_t i;
@@ -36,7 +37,7 @@ static void ft_get_history(t_shell **shell, const char *line)
         (*shell)->cmd.history = (char **)malloc(sizeof(char *) * 10);
     while ((*shell)->cmd.history[i])
         i++;
-    if (i == 10)
+    if (i == 9)
         ft_get_history_ten(shell);
     (*shell)->cmd.history[i] = ft_strdup(line);
     (*shell)->cmd.history[i + 1] = 0;
