@@ -15,6 +15,7 @@ typedef struct s_cmd{
 
 typedef struct s_pwd{
     char *line;
+    char **argv;
 }   t_pwd;
 
 typedef struct s_shell{
@@ -27,3 +28,4 @@ void   ft_mshell_loop(t_shell **shell, char **envp);
 void ft_parse_pwd(t_shell **shell, char **envp);
 
 #endif
+
