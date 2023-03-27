@@ -55,21 +55,30 @@ CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 
 all: $(NAME)
 
-$(NAME): #Readline
+$(NAME):
 	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
 
-Readline:
-	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline/readline
+brew :
+	@echo "Brew installing wait for few minutes"
+	@git clone https://github.com/Homebrew/brew ~/goinfre/homebrew
+	@mkdir -p ~/goinfre/usr/local
+	@echo 'export HOMEBREW_PREFIX=~/goinfre/usr/local' >> ~/.zshrc
+	@echo 'export PATH=$PATH:~/goinfre/homebrew/bin:HOMEBREW_PREFIX/bin' >> ~/.zshrc
+	@export HOMEBREW_PREFIX=~/goinfre/usr/local
+	@export PATH=$PATH:~/goinfre/homebrew/bin:HOMEBREW_PREFIX/bin
+	@brew update
+
+readline: 
+	@echo "Readline library installing. Please waiting few minutes"
+	@brew install readline
 
 
 clean: fclean
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf ./lib/readline/readline
-	@find ./lib/readline/ -type f -not \( -name 'Makefile' \) -delete
 
-re: fclean all m
+re: fclean all
 
 m:
 	@./minishell
