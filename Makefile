@@ -51,12 +51,14 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 SRC	 			  := ./src/init/mshell_loop.c\
 							 ./src/parse/ft_parse_pwd.c\
 
+LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
+
 CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 
 all: $(NAME)
 
 $(NAME):
-	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
+	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc
 
 brew :
 	@echo "Brew installing wait for few minutes"

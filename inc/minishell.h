@@ -6,6 +6,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft.h"
+# include <readline/readline.h>
 
 
 typedef struct s_pwd{
