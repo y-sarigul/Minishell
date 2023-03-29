@@ -75,6 +75,14 @@ readline:
 	@echo "Readline library installing. Please waiting few minutes"
 	@brew install readline
 
+nvim :
+	@brew install neovim
+	@git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
+	@nvim
+
+restartpath:
+	@export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
 
 clean: fclean
 
@@ -86,4 +94,4 @@ re: fclean all
 m:
 	@./minishell
 
-.PHONY: all re clean fclean m
+.PHONY: all re clean fclean m brew readline nvim

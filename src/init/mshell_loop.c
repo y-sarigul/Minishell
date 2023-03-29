@@ -10,7 +10,5 @@ void ft_mshell_loop(t_shell **shell, char **envp)
         ft_parse_pwd(shell, envp);
         printf("%s => ", (*shell) -> pwd.line);
         (*shell) -> cmd.line = readline("");
-        ft_get_history(shell, (*shell) ->cmd.line);
-        get_lines(shell);
     }
 }
