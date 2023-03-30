@@ -10,6 +10,7 @@ int main(int argc, char **argv, char **envp) {
     shell = (t_shell *)malloc(sizeof(t_shell));
 
   // looping shell program
-  ft_mshell_loop(&shell, envp);
+  //ft_mshell_loop(&shell, envp);
+  ft_save_history(&shell, "skjfd");
   return 0;
 }
