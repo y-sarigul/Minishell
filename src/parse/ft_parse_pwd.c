@@ -17,7 +17,7 @@ static char	*creat_pwd(char const *s1, char const *s2)
         s3[i] = s1[i];
         i++;
     }
-    s3[i] = ' ';
+    s3[i] = '@';
     i++;
     j = 0;
     while (s2[j] != 0){

@@ -8,6 +8,12 @@
 # include "libft.h"
 # include <readline/readline.h>
 
+
+typedef struct s_greater{
+    char *right;
+    char *left;
+} t_greater;
+
 typedef struct s_history{
     char *line;
     struct s_history *next;
@@ -16,6 +22,7 @@ typedef struct s_history{
 
 typedef struct s_cmd{
     char *line;
+    char *cmd;
 } t_cmd;
 
 typedef struct s_pwd{
@@ -34,6 +41,9 @@ void ft_parse_pwd(t_shell **shell, char **envp);
 
 /*****history.c*****/
 void ft_save_history(t_shell **shell, const char *line);
+
+/******Lexer**********/
+void ft_lexer(t_shell **shell);
 
 
 #endif
