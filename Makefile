@@ -51,7 +51,8 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 SRC	 			  := ./src/init/mshell_loop.c\
 							 ./src/init/history.c\
 							 ./src/parse/ft_parse_pwd.c\
-							 ./src/lexer/lexer.c\
+							 ./src/lexer/ft_space_split.c\
+							 ./src/lexer/ft_lexer_utils.c\
 							 ./src/utils/ft_utils.c\
 
 LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline

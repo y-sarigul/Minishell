@@ -1,4 +1,5 @@
 #include "../../inc/minishell.h"
+#include <stdio.h>
 
  size_t ft_strnlen(const char *s1, const char del)
 {
@@ -35,11 +36,16 @@ char *ft_strstr(const char *s1, const char del)
     return (buff);
 }
 
+void ft_error(const char *err){
+    perror(err);
+    exit(EXIT_FAILURE);
+}
+
 /*
 
 struct node **cmd_spliplit(char **cmd_str){
-    char **cmds = split_space(cmd_str, ' ');  
-    char **cmds = split_opereator(cmds);
+    char **cmds = split_space(cmd_str, ' ');  yapildi
+    char **cmds = split_opereator(cmds); 
     char **cmds = split_options(cmd);
 
     struct node **list = lst_new();
