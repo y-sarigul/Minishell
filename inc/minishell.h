@@ -63,7 +63,7 @@ void ft_save_history(t_shell **shell, const char *line);
 /******Lexer**********/
 void ft_space_split(t_shell **shell);
 /******lexer_utils*****/
-void ft_addlst_lexer(t_shell **shell);
+void ft_addlst_lexer(t_shell **shell, size_t size);
 
 /******UTILS**********/
 char *ft_strstr(const char *s1, const char del);

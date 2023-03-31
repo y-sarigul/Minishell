@@ -1,20 +1,6 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
-static size_t ft_sizelst(t_shell *shell)
-{
-    size_t i;
-    t_cmdline *iter;
-    
-    i = 0;
-    iter = shell -> cmdline;
-    while (iter){
-        i++;
-        iter = iter->next;
-    }
-    return (i);
-}
-
 static char **ft_splited_operations(const char *line)
 {
     char **buff;
@@ -41,33 +27,33 @@ static int ft_check_type(const char *line)
     char **buff;
 
     buff = ft_splited_operations(line);
-    printf("geldi\n");
     return (0);
 }
 
-void ft_addlst_lexer(t_shell **shell)
+void ft_addlst_lexer(t_shell **shell, size_t size)
 {
     t_cmdline *iter;
     size_t i;
 
-    iter = (*shell)->cmdline;
-    i = ft_sizelst((*shell));
-    printf("%zu\n", i);
-    if (!(*shell)->cmdline){
-        (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
-        (*shell)->cmdline->next = NULL;
-        (*shell)->cmdline->prev = NULL;
-        (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
-        (*shell)->cmdline->type = 0;
-    }
-    else {
-        while (iter -> next)
-            iter = iter -> next;
-        iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
-        iter -> next -> value = ft_strdup((*shell)->cmd.splited_line[i]); 
-        iter -> next -> type = ft_check_type(iter -> value);
-        iter -> next -> next = NULL;
-        iter -> next -> prev = iter;
+    i = 0;
+    while (size--){
+        iter = (*shell)->cmdline;
+        if (!(*shell)->cmdline){
+            (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
+            (*shell)->cmdline->next = NULL;
+            (*shell)->cmdline->prev = NULL;
+            (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
+            (*shell)->cmdline->type = 0;
+        }
+        else {
+            while (iter -> next)
+                iter = iter -> next;
+            iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
+            iter -> next -> value = ft_strdup((*shell)->cmd.splited_line[i]); 
+            iter -> next -> type = ft_check_type(iter -> value);
+            iter -> next -> next = NULL;
+            iter -> next -> prev = iter;
+        }
     }
 }
 
