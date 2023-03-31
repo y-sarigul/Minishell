@@ -52,6 +52,7 @@ SRC	 			  := ./src/init/mshell_loop.c\
 							 ./src/init/history.c\
 							 ./src/parse/ft_parse_pwd.c\
 							 ./src/lexer/lexer.c\
+							 ./src/utils/ft_utils.c\
 
 LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
@@ -61,29 +62,6 @@ all: $(NAME)
 
 $(NAME):
 	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc
-
-brew :
-	@echo "Brew installing wait for few minutes"
-	@git clone https://github.com/Homebrew/brew ~/goinfre/homebrew
-	@mkdir -p ~/goinfre/usr/local
-	@echo 'export HOMEBREW_PREFIX=~/goinfre/usr/local' >> ~/.zshrc
-	@echo 'export PATH=$PATH:~/goinfre/homebrew/bin:HOMEBREW_PREFIX/bin' >> ~/.zshrc
-	@export HOMEBREW_PREFIX=~/goinfre/usr/local
-	@export PATH=$PATH:~/goinfre/homebrew/bin:HOMEBREW_PREFIX/bin
-	@brew update
-
-readline: 
-	@echo "Readline library installing. Please waiting few minutes"
-	@brew install readline
-
-nvim :
-	@brew install neovim
-	@git clone --depth 1 https://github.com/AstroNvim/AstroNvim ~/.config/nvim
-	@nvim
-
-restartpath:
-	@export PATH=$PATH:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-
 
 clean: fclean
 
