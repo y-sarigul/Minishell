@@ -13,7 +13,7 @@ static size_t ft_buff_size(char **line)
         i++;
         line++;
     }
-    return (i - 1);
+    return (i);
 }
 
 void ft_space_split(t_shell **shell)

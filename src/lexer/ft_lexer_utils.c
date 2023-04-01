@@ -23,11 +23,12 @@ static char **ft_splited_operations(const char *line)
 
 static int ft_check_type(const char *line)
 {
-    // cat test.txt |grep yasin
+
     char **buff;
 
     buff = ft_splited_operations(line);
-    return (0);
+
+    return(0);
 }
 
 void ft_addlst_lexer(t_shell **shell, size_t size)
@@ -36,8 +37,8 @@ void ft_addlst_lexer(t_shell **shell, size_t size)
     size_t i;
 
     i = 0;
+    iter = (*shell)->cmdline;
     while (size--){
-        iter = (*shell)->cmdline;
         if (!(*shell)->cmdline){
             (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
             (*shell)->cmdline->next = NULL;
@@ -45,15 +46,27 @@ void ft_addlst_lexer(t_shell **shell, size_t size)
             (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
             (*shell)->cmdline->type = 0;
         }
-        else {
-            while (iter -> next)
-                iter = iter -> next;
-            iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
-            iter -> next -> value = ft_strdup((*shell)->cmd.splited_line[i]); 
-            iter -> next -> type = ft_check_type(iter -> value);
-            iter -> next -> next = NULL;
-            iter -> next -> prev = iter;
-        }
+        printf("%s\n", (*shell)->cmdline->value);
+        i++;
     }
+    // while (size--){
+    //     if (!(*shell)->cmdline){
+    //         (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
+    //         (*shell)->cmdline->next = NULL;
+    //         (*shell)->cmdline->prev = NULL;
+    //         (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
+    //         (*shell)->cmdline->type = 0;
+    //     }
+    //     else {
+    //         while (iter -> next)
+    //             iter = iter -> next;
+    //         iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
+    //         iter -> next -> value = ft_strdup((*shell)->cmd.splited_line[i]); 
+    //         //iter -> next -> type = ft_check_type(iter -> value); //Bus error and segment
+    //         iter -> next -> next = NULL;
+    //         iter -> next -> prev = iter;
+    //     }
+    //     i++;
+    // }
 }
 
