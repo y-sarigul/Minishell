@@ -70,7 +70,7 @@ char **ft_split_test(char *str);
 char *ft_strstr(const char *s1, const char del);
 size_t ft_strnlen(const char *s1, const char del);
 void ft_error(const char *err);
-int check_greater_than(const char **line);
+int check_greater_than(char **line);
 
 
 #endif

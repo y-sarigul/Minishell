@@ -35,13 +35,9 @@ static int ft_check_type(char *line)
 
     buff = ft_split_test(line);
 
-    // Devam ediyorum
-    // i = 0;
-    // triger = 0;
-    // while (buff[i])
-    // {
-    //     i++;
-    // }
+    i = 0;
+    triger = 0;
+    check_greater_than(buff);
 
     return(0);
 }
