@@ -12,7 +12,6 @@ int main(int argc, char **argv, char **envp) {
 
     // looping shell program
     ft_mshell_loop(&shell, envp);
-
   return 0;
 }
 

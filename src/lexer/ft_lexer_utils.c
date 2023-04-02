@@ -1,72 +1,76 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
-static char **ft_splited_operations(const char *line)
+char	**ft_split_test(char *str)
 {
-    char **buff;
-    size_t i;
-    size_t j;
+    int i;
+    int i2;
+    int i3;
+    char **tab;
 
     i = 0;
-    if (!line)
-        return (NULL);
-    buff = (char **)malloc(sizeof(char *) * ft_strlen(line) + 1);
-    while (line[i]){
-        buff[i][j] = line[i];
-        j++;
-        buff[i][j] = '\0';
+    i2 = 0;
+    tab = (char**)malloc(sizeof(**tab) * 100);
+    while (str[i] != '\0')
+    {
+        i3 = 0;
+        tab[i2] = (char*)malloc(sizeof(char) * 100);
+        tab[i2][i3] = str[i];
         i++;
-        buff[i] = 0;
+        i3++;
+        tab[i2][i3] = '\0';
+        i2++;
     }
-    return (buff);
+
+    tab[i2] = 0;
+    return (tab);
 }
 
-static int ft_check_type(const char *line)
+static int ft_check_type(char *line)
 {
 
+    int i;
     char **buff;
+    int triger;
 
-    buff = ft_splited_operations(line);
+    buff = ft_split_test(line);
+
+    // Devam ediyorum
+    // i = 0;
+    // triger = 0;
+    // while (buff[i])
+    // {
+    //     i++;
+    // }
 
     return(0);
 }
 
+// cmdline struct'inin icerisine atamalari yapar
+
 void ft_addlst_lexer(t_shell **shell, size_t size)
 {
-    t_cmdline *iter;
+    t_shell *iter;
     size_t i;
 
     i = 0;
-    iter = (*shell)->cmdline;
+    iter = (*shell);
     while (size--){
         if (!(*shell)->cmdline){
             (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
             (*shell)->cmdline->next = NULL;
             (*shell)->cmdline->prev = NULL;
-            (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
+            (*shell)->cmdline->value = (*shell)->cmd.splited_line[i];
             (*shell)->cmdline->type = 0;
         }
-        printf("%s\n", (*shell)->cmdline->value);
+        else {
+            while (iter -> cmdline -> next)
+                iter -> cmdline = iter -> cmdline -> next;
+            iter -> cmdline -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
+            iter -> cmdline -> next -> value = (*shell)->cmd.splited_line[i];
+        }
+        ft_check_type((*shell)->cmd.splited_line[i]);
         i++;
     }
-    // while (size--){
-    //     if (!(*shell)->cmdline){
-    //         (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
-    //         (*shell)->cmdline->next = NULL;
-    //         (*shell)->cmdline->prev = NULL;
-    //         (*shell)->cmdline->value = ft_strdup((*shell)->cmd.splited_line[i]);
-    //         (*shell)->cmdline->type = 0;
-    //     }
-    //     else {
-    //         while (iter -> next)
-    //             iter = iter -> next;
-    //         iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
-    //         iter -> next -> value = ft_strdup((*shell)->cmd.splited_line[i]); 
-    //         //iter -> next -> type = ft_check_type(iter -> value); //Bus error and segment
-    //         iter -> next -> next = NULL;
-    //         iter -> next -> prev = iter;
-    //     }
-    //     i++;
-    // }
 }
 

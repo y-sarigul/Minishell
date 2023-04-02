@@ -62,7 +62,7 @@ CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 all: $(NAME)
 
 $(NAME):
-	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc
+	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc -g3
 
 clean: fclean
 

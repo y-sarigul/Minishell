@@ -64,11 +64,13 @@ void ft_save_history(t_shell **shell, const char *line);
 void ft_space_split(t_shell **shell);
 /******lexer_utils*****/
 void ft_addlst_lexer(t_shell **shell, size_t size);
+char **ft_split_test(char *str);
 
 /******UTILS**********/
 char *ft_strstr(const char *s1, const char del);
 size_t ft_strnlen(const char *s1, const char del);
 void ft_error(const char *err);
+int check_greater_than(const char **line);
 
 
 #endif
