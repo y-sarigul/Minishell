@@ -8,7 +8,8 @@
 # include "libft.h"
 # include <readline/readline.h>
 
-/*****************************************/
+// bu enumda benim turleri tutugum yer maskelemek kolay olmasi icin
+// 2 nin katlari ile islem yapiyorum
 typedef enum e_kind {
     CMD = 0,
     PIPE = 1,
@@ -17,6 +18,8 @@ typedef enum e_kind {
     QUOTE = 8,
 } e_kind;
 
+//Burasi benim cmd.splited_line dan algim ve artik kimliklerini aktardigim yer
+//cift yonlu bagli liste ile bunlari burada tutuyorum ve hepsine birer id veriyorum
 typedef struct s_cmdline{
     struct s_cmdline *next;
     struct s_cmdline *prev;
@@ -24,28 +27,30 @@ typedef struct s_cmdline{
     char *value;
 } t_cmdline;
 
-/*****************************************/
 
-typedef struct s_greater{
-    char *right;
-    char *left;
-} t_greater;
-
+//burasi benim gecmiste yazilan cmd larin tutugum yer 
+//buffer size 10 olarak ayarlanmistir ileriki donemlerde dahada
+//buyultulebilir
 typedef struct s_history{
     char *line;
     struct s_history *next;
     struct s_history *prev;
 } t_history;
 
+// cmd ile readline ile donen yazilari tutuyorum ve 
+// bunlari splitliyorum ve onuda ** icerisinde tutuyorum
 typedef struct s_cmd{
     char *line;
     char **splited_line;
 } t_cmd;
 
+// pwd enviroment ini tutan structim
 typedef struct s_pwd{
     char *line;
 }   t_pwd;
 
+
+// Ana struct yapim
 typedef struct s_shell{
     t_pwd pwd;
     t_cmd cmd;

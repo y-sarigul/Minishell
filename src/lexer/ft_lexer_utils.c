@@ -1,6 +1,7 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
+// Her bir kelimeyi splitliyorum ve her bir harfin ne oldugunu kontor ediyorum
 char	**ft_split_test(char *str)
 {
     int i;
@@ -26,6 +27,12 @@ char	**ft_split_test(char *str)
     return (tab);
 }
 
+/*
+ * Burada bizlere gelen cmd linin icerisinde birlesik operator varmi onlari 
+ * ayirarak gonderilen kelimenin tipini belirliyorum
+ */
+ 
+
 static int ft_check_type(char *line)
 {
 
@@ -42,8 +49,14 @@ static int ft_check_type(char *line)
     return(0);
 }
 
-// cmdline struct'inin icerisine atamalari yapar
 
+/*
+ * Listemi olusturuyorum ve her bir kelimeyi bir struct icerisinde tutuyorum
+ * bunlarida birbirine bagliyorum 
+ * Buradaki onemli nokta kullanacagim operatorlerin argumanlar ile 
+ * Bitisik yazilmasina dikkat etmek
+ * Bunlarida ft_check_type ile halletmeyi planliyorum
+ * */
 void ft_addlst_lexer(t_shell **shell, size_t size)
 {
     t_shell *iter;

@@ -1,9 +1,7 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
-// cat > a.txt | grep deneme
-// bosluklari 
-//
+// Burada cift pointerin buyuklugunu bulmaya calisiyorum
 static size_t ft_buff_size(char **line)
 {
     int i;
@@ -16,6 +14,11 @@ static size_t ft_buff_size(char **line)
     return (i);
 }
 
+/*
+ * Burada cmd.splited_line icerisine readlinedan gelen cmd lini splitliyorum
+ * ve bunu cift yonlu bagli liste olusturmak icin ft_addlst_lexer icerisine
+ * atiyorum.
+ * */
 void ft_space_split(t_shell **shell)
 {
     int i;

@@ -48,7 +48,7 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 							 ./lib/libft/ft_tolower.c\
 							 ./lib/libft/ft_toupper.c\
 
-SRC	 			  := ./src/init/mshell_loop.c\
+SRC	 			  := ./src/loop/mshell_loop.c\
 							 ./src/init/history.c\
 							 ./src/parse/ft_parse_pwd.c\
 							 ./src/lexer/ft_space_split.c\

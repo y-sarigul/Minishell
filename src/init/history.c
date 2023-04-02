@@ -1,19 +1,4 @@
 #include "../../inc/minishell.h"
-#include <readline/readline.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-// utils test
-// static void ft_printlst(t_shell *shell)
-// {
-//     t_shell *iter;
-
-//     iter = shell;
-//     while (iter->history){
-//         printf("%s\n", iter->history->line);
-//         iter->history = iter->history->next;
-//     }
-// }
 
 static int ft_sizelst(t_history *his)
 {

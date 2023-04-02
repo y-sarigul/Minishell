@@ -10,7 +10,7 @@ int main(int argc, char **argv, char **envp) {
     if (!shell)
         shell = (t_shell *)malloc(sizeof(t_shell));
 
-    // looping shell program
+    // Shell'i loop'a gonderiyorum
     ft_mshell_loop(&shell, envp);
   return 0;
 }
