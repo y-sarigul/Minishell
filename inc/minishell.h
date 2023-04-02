@@ -66,7 +66,7 @@ void new_history(t_shell **shell, char *line);
 /******lexer**********/
 void ft_space_split(t_shell **shell);
 void ft_addlst_lexer(t_shell **shell, size_t size);
-char **ft_split_test(char *str);
+char **alphabet_parser(char *str);
 
 /******utils**********/
 char *ft_strstr(const char *s1, const char del);

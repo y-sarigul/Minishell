@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 // Her bir kelimeyi splitliyorum ve her bir harfin ne oldugunu kontor ediyorum
-char	**ft_split_test(char *str)
+char **alphabet_parser(char *str)
 {
     int i;
     int i2;
@@ -40,7 +40,7 @@ static int ft_check_type(char *line)
     char **buff;
     int triger;
 
-    buff = ft_split_test(line);
+    buff = alphabet_parser(line);
 
     i = 0;
     triger = 0;

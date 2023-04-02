@@ -7,7 +7,6 @@ static int ft_strlen_double_pointer(char **line)
     i = 0;
     while (line[i] != 0)
         i++;
-    printf("%d\n", i);
     return (i);
 }
 
