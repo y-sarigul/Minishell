@@ -8,6 +8,9 @@
 # include "libft.h"
 # include <readline/readline.h>
 
+# define BUFFSIZE 512
+# define LINESIZE 1024
+
 // bu enumda benim turleri tutugum yer maskelemek kolay olmasi icin
 // 2 nin katlari ile islem yapiyorum
 typedef enum e_kind {
@@ -28,15 +31,6 @@ typedef struct s_cmdline{
 } t_cmdline;
 
 
-//burasi benim gecmiste yazilan cmd larin tutugum yer 
-//buffer size 10 olarak ayarlanmistir ileriki donemlerde dahada
-//buyultulebilir
-typedef struct s_history{
-    char *line;
-    struct s_history *next;
-    struct s_history *prev;
-} t_history;
-
 // cmd ile readline ile donen yazilari tutuyorum ve 
 // bunlari splitliyorum ve onuda ** icerisinde tutuyorum
 typedef struct s_cmd{
@@ -54,8 +48,8 @@ typedef struct s_pwd{
 typedef struct s_shell{
     t_pwd pwd;
     t_cmd cmd;
-    t_history *history;
     t_cmdline *cmdline;
+    char **history;
 } t_shell;
 
 /********init********/
@@ -65,13 +59,16 @@ void ft_parse_pwd(t_shell **shell, char **envp);
 /*****history.c*****/
 void ft_save_history(t_shell **shell, const char *line);
 
-/******Lexer**********/
+// ***
+void new_history(t_shell **shell, char *line);
+// ***
+
+/******lexer**********/
 void ft_space_split(t_shell **shell);
-/******lexer_utils*****/
 void ft_addlst_lexer(t_shell **shell, size_t size);
 char **ft_split_test(char *str);
 
-/******UTILS**********/
+/******utils**********/
 char *ft_strstr(const char *s1, const char del);
 size_t ft_strnlen(const char *s1, const char del);
 void ft_error(const char *err);

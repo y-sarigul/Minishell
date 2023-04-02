@@ -1,64 +1,43 @@
 #include "../../inc/minishell.h"
 
-static int ft_sizelst(t_history *his)
+static int ft_strlen_double_pointer(char **line)
 {
     int i;
-    t_history *iter;
-    
+
     i = 0;
-    iter = his;
-    while (iter){
+    while (line[i] != 0)
         i++;
-        iter = iter->next;
-    }
-    return (i - 1);
+    printf("%d\n", i);
+    return (i);
 }
 
-static void ft_overfollow_history(t_shell **shell, const char *line)
+/*
+ * Burada shell structinin icerisindeki new_history icerisine buffersize kadar
+ * girilen eski cmd'leri tutuyorum gelistirmeler olabilir
+ * Burada Buffsize'i asan bir durumda ne olacagine karar verilmemistir
+ * ************Burayi gelistir*************
+ * */
+void new_history(t_shell **shell, char *line)
 {
-    t_history *temp;
-    t_history *tail;
+    int i;
+    int i2;
+    int i3;
 
-    tail = (*shell)->history;
-    temp = (t_history *)malloc(sizeof(t_history));
-    temp -> next = NULL;
-    temp -> line = ft_strdup(line);
-    while (tail -> next)
-        tail = tail -> next;
-    tail -> next = temp;
-    temp -> prev = tail;
-    (*shell)->history = (*shell)->history->next;
-    (*shell)->history->prev = NULL;
-}
-
-static void ft_addlist_his(t_shell **shell, const char *line)
-{
-    t_history *iter;
-
-    if (ft_sizelst((*shell)->history) >= 10)
+    i = 0;
+    if (!(*shell)->history)
+        (*shell)->history = (char**)malloc(sizeof(char*) * BUFFSIZE);
+    i2 = ft_strlen_double_pointer((*shell)->history);
+    while (line[i] != '\0')
     {
-        ft_overfollow_history(shell, line);
-        return;
+        i3 = 0;
+        (*shell)->history[i2] = (char*)malloc(sizeof(char) * LINESIZE);
+        while (line[i]){
+            (*shell)->history[i2][i3] = line[i];
+            i++;
+            i3++;
+        }
+        (*shell)->history[i2][i3] = '\0';
+        i2++;
     }
-
-    iter = (*shell) -> history;
-    if (!(*shell) -> history){
-        (*shell) -> history = (t_history *)malloc(sizeof(t_history));
-        (*shell) -> history-> line = ft_strdup(line);
-        (*shell) -> history-> next = NULL;
-        (*shell) -> history-> prev = NULL;
-    }
-    else {
-        while (iter -> next)
-            iter = iter -> next;
-        iter -> next = (t_history *)malloc(sizeof(t_history));
-        iter -> next -> line = ft_strdup(line);
-        iter -> next -> next = NULL;
-        iter -> next -> prev = iter;
-    }
-}
-
-void ft_save_history(t_shell **shell, const char *line)
-{
-    ft_addlist_his(shell, line);
+    (*shell)->history[i2] = 0;
 }

@@ -20,7 +20,8 @@ void ft_mshell_loop(t_shell **shell, char **envp)
         ft_parse_pwd(shell, envp);
         printf("%s => ", (*shell) -> pwd.line);
         (*shell) -> cmd.line = readline("");
-        ft_save_history(shell, (*shell)->cmd.line);
+        // ft_save_history(shell, (*shell)->cmd.line);
+        new_history(shell, (*shell)->cmd.line);
         ft_space_split(shell);
     }
 }

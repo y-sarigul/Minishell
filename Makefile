@@ -49,12 +49,12 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 							 ./lib/libft/ft_toupper.c\
 
 SRC	 			  := ./src/loop/mshell_loop.c\
-							 ./src/init/history.c\
 							 ./src/parse/ft_parse_pwd.c\
 							 ./src/lexer/ft_space_split.c\
 							 ./src/lexer/ft_lexer_utils.c\
 							 ./src/lexer/check_operations.c\
 							 ./src/utils/ft_utils.c\
+							 ./src/init/history.c\
 
 LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
@@ -63,12 +63,13 @@ CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 all: $(NAME)
 
 $(NAME):
-	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc #-g3
+	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc -g3
 
 clean: fclean
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -rf ./minishell.dSYM/
 
 re: fclean all
 

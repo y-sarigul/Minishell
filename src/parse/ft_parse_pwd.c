@@ -45,8 +45,6 @@ void ft_parse_pwd(t_shell **shell, char **envp)
 
     if (!(*shell))
         (*shell) = (t_shell *)malloc(sizeof(t_shell));
-
-
     buff = ft_split(find_pwd("PWD",envp), '/');
     user = find_pwd("USER=", envp);
     i = 0;
