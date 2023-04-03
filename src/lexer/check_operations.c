@@ -1,24 +1,73 @@
 #include "../../inc/minishell.h"
 
-int check_greater_than(char **line)
+// > veya >> gelen double pointer icerisinde ariyor ve buldugunda 
+// shell e kelemke icin ft_addlst_center a gonderiyor
+int check_greater_than(t_shell **shell, char **line)
 {
     size_t i;
-    int flag;
+    char *buff;
 
     i = 0;
-    flag = 0;
     while (line[i])
     {
         if (line[i][0] == '>')
         {
-            if (line[i + 1] != 0 && line[i + 1][0] == '>' && flag == 0)
+            if (line[i + 1] != 0 && line[i + 1][0] == '>')
             {
-                printf(">>\n");
-                flag = 1;
-                return (1);
+                buff = (char *)malloc(sizeof(char) * (2 + 1));
+                buff[0] = line[i][0];
+                buff[1] = line[i + 1][0];
+                buff[2] = '\0';
+                printf("%s\n", buff);
+                ft_addlst_center(shell, buff);
+                i++;
             }
-            else if (flag == 0 && line[i][0] == '>')
-                printf(">\n");
+            else if (line[i][0] == '>')
+            {
+                buff = (char *)malloc(sizeof(char) * (1 + 1));
+                buff[0] = line[i][0];
+                buff[1] = '\0';
+                printf("%s\n", buff);
+                ft_addlst_center(shell, buff);
+            }
+            free(buff);
+        }
+        i++;
+    }
+    return (0);
+}
+
+// < veya << gelen double pointer icerisinde ariyor ve buldugunda 
+// shell e kelemke icin ft_addlst_center a gonderiyor
+int less_than(t_shell **shell, char **line)
+{
+    size_t i;
+    char *buff;
+
+    i = 0;
+    while (line[i])
+    {
+        if (line[i][0] == '<')
+        {
+            if (line[i + 1] != 0 && line[i + 1][0] == '<')
+            {
+                buff = (char *)malloc(sizeof(char) * (2 + 1));
+                buff[0] = line[i][0];
+                buff[1] = line[i + 1][0];
+                buff[2] = '\0';
+                // ft_addlst_center(shell, buff);
+                printf("%s\n", buff);
+                i++;
+            }
+            else if (line[i][0] == '<')
+            {
+                buff = (char *)malloc(sizeof(char) * (1 + 1));
+                buff[0] = line[i][0];
+                buff[1] = '\0';
+                // ft_addlst_center(shell, buff);
+                printf("%s\n", buff);
+            }
+            free(buff);
         }
         i++;
     }

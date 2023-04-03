@@ -43,7 +43,6 @@ typedef struct s_pwd{
     char *line;
 }   t_pwd;
 
-
 // Ana struct yapim
 typedef struct s_shell{
     t_pwd pwd;
@@ -72,7 +71,13 @@ char **alphabet_parser(char *str);
 char *ft_strstr(const char *s1, const char del);
 size_t ft_strnlen(const char *s1, const char del);
 void ft_error(const char *err);
-int check_greater_than(char **line);
+int ft_check_type(t_shell **shell, char *line);
 
+/****check_operations***/
+int check_greater_than(t_shell **shell, char **line);
+int less_than(t_shell **shell, char **line);
+
+/*******lstfonctions*************/
+void ft_addlst_center(t_shell **shell, char *redirection);;
 
 #endif
