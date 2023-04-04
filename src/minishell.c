@@ -13,4 +13,5 @@ int main (int argc, char **argv, char **envp)
     ft_parse_pwd(&pwd, envp);
     printf("%s\n", pwd -> line);
     return 0;
+    //samet was here
 }
