@@ -50,6 +50,9 @@ void ft_addlst_lexer(t_shell **shell, size_t size)
             }
             iter -> cmdline -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
             iter -> cmdline -> next -> value = (*shell)->cmd.splited_line[i];
+            iter -> cmdline -> next -> next = NULL;
+            iter -> cmdline -> next -> prev = iter -> cmdline;
+            iter -> cmdline -> next -> type = 0;
         }
         i++;
     }
