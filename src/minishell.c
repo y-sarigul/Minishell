@@ -7,6 +7,7 @@ int main(int argc, char **argv, char **envp) {
     (void)argv;
     t_shell *shell;
 
+
     if (!shell)
         shell = (t_shell *)malloc(sizeof(t_shell));
 
