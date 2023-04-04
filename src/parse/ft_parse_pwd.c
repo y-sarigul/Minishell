@@ -1,5 +1,7 @@
 #include "../../inc/minishell.h"
 
+// This fuction merge two strings that user name and where we are
+// Like ft_strjoin
 static char	*creat_pwd(char const *s1, char const *s2)
 {
     unsigned int	i;
@@ -15,7 +17,7 @@ static char	*creat_pwd(char const *s1, char const *s2)
         s3[i] = s1[i];
         i++;
     }
-    s3[i] = ' ';
+    s3[i] = '@';
     i++;
     j = 0;
     while (s2[j] != 0){
@@ -26,6 +28,7 @@ static char	*creat_pwd(char const *s1, char const *s2)
     return (s3);
 }
 
+// Searching in enviroment and return source string 
 static char *find_pwd(char *src, char **envp)
 {
     while (ft_strncmp(src, *envp, ft_strlen(src))) {
@@ -34,20 +37,19 @@ static char *find_pwd(char *src, char **envp)
     return (*envp + (ft_strlen(src)));
 }
 
-void ft_parse_pwd(t_pwd **pwd, char **envp)
+void ft_parse_pwd(t_shell **shell, char **envp)
 {
     int i;
     char **buff;
     char *user;
 
-    if (!(*pwd))
-        (*pwd) = (t_pwd *)malloc(sizeof(t_pwd));
-
+    if (!(*shell))
+        (*shell) = (t_shell *)malloc(sizeof(t_shell));
     buff = ft_split(find_pwd("PWD",envp), '/');
     user = find_pwd("USER=", envp);
     i = 0;
     while (buff[i])
         i++;
     i--;
-    (*pwd) -> line = creat_pwd(user, buff[i]);
+    (*shell) -> pwd.line = creat_pwd(user, buff[i]);
 }

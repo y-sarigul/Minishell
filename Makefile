@@ -48,30 +48,33 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 							 ./lib/libft/ft_tolower.c\
 							 ./lib/libft/ft_toupper.c\
 
-SRC	 			  := ./src/init/mshell_loop.c\
+SRC	 			  := ./src/loop/mshell_loop.c\
 							 ./src/parse/ft_parse_pwd.c\
+							 ./src/lexer/ft_space_split.c\
+							 ./src/lexer/ft_lexer_utils.c\
+							 ./src/lexer/check_operations.c\
+							 ./src/lexer/lstfunctions.c\
+							 ./src/utils/ft_utils.c\
+							 ./src/init/history.c\
+
+LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
 CFLAGS			:= -Wall -Wextra -Werror -I ./inc
 
 all: $(NAME)
 
-$(NAME): #Readline
-	@gcc ./src/minishell.c $(SRC) $(LIBFT) -o $(NAME) -I ./inc
-
-Readline:
-	@git clone git://git.savannah.gnu.org/readline.git ./lib/readline/readline
-
+$(NAME):
+	@gcc ./src/minishell.c $(SRC) $(LIBFT) $(LREADLINE) -o $(NAME) -I ./inc -g3
 
 clean: fclean
 
 fclean: clean
 	@rm -f $(NAME)
-	@rm -rf ./lib/readline/readline
-	@find ./lib/readline/ -type f -not \( -name 'Makefile' \) -delete
+	@rm -rf ./minishell.dSYM/
 
-re: fclean all m
+re: fclean all
 
 m:
 	@./minishell
 
-.PHONY: all re clean fclean m
+.PHONY: all re clean fclean m brew readline nvim

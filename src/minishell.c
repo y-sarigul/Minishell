@@ -1,17 +1,18 @@
 #include "../inc/minishell.h"
 #include <stdio.h>
+#include <string.h>
 
-int main (int argc, char **argv, char **envp)
-{
+int main(int argc, char **argv, char **envp) {
     (void)argc;
     (void)argv;
-    t_pwd *pwd;
+    t_shell *shell;
 
-    // This functions is parser for pwd.
-    // Return value is a line.
-    // Its will show us where we are
-    ft_parse_pwd(&pwd, envp);
-    printf("%s\n", pwd -> line);
-    return 0;
-    //samet was here
+
+    if (!shell)
+        shell = (t_shell *)malloc(sizeof(t_shell));
+
+    // Shell'i loop'a gonderiyorum
+    ft_mshell_loop(&shell, envp);
+  return 0;
 }
+
