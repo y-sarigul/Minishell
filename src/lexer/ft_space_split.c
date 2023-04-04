@@ -30,6 +30,6 @@ void ft_space_split(t_shell **shell)
     (*shell)->cmd.splited_line = ft_split((*shell)->cmd.line, ' ');
     size = ft_buff_size((*shell)->cmd.splited_line);
 
-    ft_addlst_lexer(shell, size);
+    ft_addlst_lexer(&(*shell)->cmdline, (*shell), size);
     free((*shell)->cmd.splited_line);
 }

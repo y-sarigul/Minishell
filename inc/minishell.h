@@ -21,6 +21,13 @@ typedef enum e_kind {
     QUOTE = 8,
 } e_kind;
 
+// cmd ile readline ile donen yazilari tutuyorum ve 
+// bunlari splitliyorum ve onuda ** icerisinde tutuyorum
+typedef struct s_cmd{
+    char *line;
+    char **splited_line;
+} t_cmd;
+
 //Burasi benim cmd.splited_line dan algim ve artik kimliklerini aktardigim yer
 //cift yonlu bagli liste ile bunlari burada tutuyorum ve hepsine birer id veriyorum
 typedef struct s_cmdline{
@@ -28,15 +35,8 @@ typedef struct s_cmdline{
     struct s_cmdline *prev;
     e_kind type;
     char *value;
+    t_cmd *cmdsplited;
 } t_cmdline;
-
-
-// cmd ile readline ile donen yazilari tutuyorum ve 
-// bunlari splitliyorum ve onuda ** icerisinde tutuyorum
-typedef struct s_cmd{
-    char *line;
-    char **splited_line;
-} t_cmd;
 
 // pwd enviroment ini tutan structim
 typedef struct s_pwd{
@@ -64,7 +64,7 @@ void new_history(t_shell **shell, char *line);
 
 /******lexer**********/
 void ft_space_split(t_shell **shell);
-void ft_addlst_lexer(t_shell **shell, size_t size);
+void ft_addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size);
 char **alphabet_parser(char *str);
 
 /******utils**********/

@@ -23,36 +23,32 @@ void ft_addlst_center(t_shell **shell, char *redirection)
  * Bitisik yazilmasina dikkat etmek
  * Bunlarida ft_check_type ile halletmeyi planliyorum
  * */
-void ft_addlst_lexer(t_shell **shell, size_t size)
+void ft_addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size)
 {
-    t_shell *iter;
+    t_cmdline *iter;
     size_t i;
 
     i = 0;
-    iter = (*shell);
+    iter = (*cmd);
     while (size--)
     {
-        if (!(*shell)->cmdline)
+        if (!(*cmd))
         {
-            (*shell)->cmdline = (t_cmdline *)malloc(sizeof(t_cmdline));
-            (*shell)->cmdline->next = NULL;
-            (*shell)->cmdline->prev = NULL;
-            (*shell)->cmdline->value = (*shell)->cmd.splited_line[i];
-            (*shell)->cmdline->type = 0;
+            (*cmd) = (t_cmdline *)malloc(sizeof(t_cmdline));
+            (*cmd)->next = NULL;
+            (*cmd)->prev = NULL;
+            (*cmd)->value = shell->cmd.splited_line[i];
+            (*cmd)->type = 0;
         }
         else 
         {
-            while (iter -> cmdline -> next)
-            {
-                iter -> cmdline = iter -> cmdline -> next;
-                ft_check_type(shell, (*shell)->cmd.splited_line[i]);
-                printf("%s\n", iter -> cmdline -> value);
-            }
-            iter -> cmdline -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
-            iter -> cmdline -> next -> value = (*shell)->cmd.splited_line[i];
-            iter -> cmdline -> next -> next = NULL;
-            iter -> cmdline -> next -> prev = iter -> cmdline;
-            iter -> cmdline -> next -> type = 0;
+            while (iter -> next)
+              iter = iter -> next;
+            iter -> next = (t_cmdline *)malloc(sizeof(t_cmdline));
+            iter -> next -> value = shell -> cmd.splited_line[i];
+            iter -> next -> next = NULL;
+            iter -> next -> prev = iter;
+            iter -> next -> type = 0;
         }
         i++;
     }
