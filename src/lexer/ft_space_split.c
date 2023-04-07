@@ -31,5 +31,5 @@ void ft_space_split(t_shell **shell)
     size = ft_buff_size((*shell)->cmd.splited_line);
 
     ft_addlst_lexer(&(*shell)->cmdline, (*shell), size);
-    free((*shell)->cmd.splited_line);
+    // free((*shell)->cmd.splited_line);
 }

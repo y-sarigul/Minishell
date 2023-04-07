@@ -35,7 +35,6 @@ typedef struct s_cmdline{
     struct s_cmdline *prev;
     e_kind type;
     char *value;
-    t_cmd *cmdsplited;
 } t_cmdline;
 
 // pwd enviroment ini tutan structim
@@ -64,7 +63,6 @@ void new_history(t_shell **shell, char *line);
 
 /******lexer**********/
 void ft_space_split(t_shell **shell);
-void ft_addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size);
 char **alphabet_parser(char *str);
 
 /******utils**********/
@@ -79,5 +77,7 @@ int less_than(t_shell **shell, char **line);
 
 /*******lstfonctions*************/
 void ft_addlst_center(t_shell **shell, char *redirection);;
+void ft_addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size);
+void ft_free_list(t_cmdline **cmd);
 
 #endif
