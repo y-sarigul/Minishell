@@ -32,10 +32,10 @@ void ft_mshell_loop(t_shell **shell, char **envp)
     while (1){
         ft_parse_pwd(shell, envp);
         printf("%s => ", (*shell) -> pwd.line);
-        (*shell) -> cmd.line = readline("");
-        new_history(shell, (*shell)->cmd.line);
+        (*shell) -> input.line = readline("");
+        new_history(shell, (*shell)->input.line);
         ft_space_split(shell);
         ft_printlst(shell);
-        ft_free_list(&(*shell)->cmdline); // -> segment
+        ft_free_list(&(*shell)->cmdline);
     }
 }

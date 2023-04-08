@@ -56,6 +56,10 @@ SRC	 			  := ./src/loop/mshell_loop.c\
 							 ./src/lexer/lstfunctions.c\
 							 ./src/utils/ft_utils.c\
 							 ./src/init/history.c\
+							 ./src/lst/cmdline_addlst_back.c\
+							 ./src/lst/cmdline_new_lst.c\
+							 ./src/lst/addlst_lexer.c\
+							 ./src/lst/free_list.c\
 
 LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
