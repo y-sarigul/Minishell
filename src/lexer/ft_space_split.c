@@ -23,6 +23,7 @@ void ft_space_split(t_shell **shell)
 {
     int i;
     size_t size;
+    t_cmdline *iter;
 
     i = 0;
     if (!(*shell)->cmd.line)
@@ -31,5 +32,12 @@ void ft_space_split(t_shell **shell)
     size = ft_buff_size((*shell)->cmd.splited_line);
 
     ft_addlst_lexer(&(*shell)->cmdline, (*shell), size);
-    // free((*shell)->cmd.splited_line);
+    //Burasini yeni ekledim sorun var gibi
+    iter = (*shell)->cmdline;
+    while (iter -> next)
+    {
+        ft_check_type(shell, iter->value);
+        iter = iter -> next;
+    }
+    free((*shell)->cmd.splited_line);
 }

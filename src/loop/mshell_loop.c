@@ -36,6 +36,6 @@ void ft_mshell_loop(t_shell **shell, char **envp)
         new_history(shell, (*shell)->cmd.line);
         ft_space_split(shell);
         ft_printlst(shell);
-        // ft_free_list(&(*shell)->cmdline); // -> segment
+        ft_free_list(&(*shell)->cmdline); // -> segment
     }
 }

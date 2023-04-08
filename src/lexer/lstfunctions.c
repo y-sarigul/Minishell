@@ -1,6 +1,7 @@
 #include "../../inc/minishell.h"
 #include <stdio.h>
 
+//double pointer listeyi freelemek icin kullaniliyor
 void ft_free_list(t_cmdline **cmd)
 {
     while ((*cmd) != NULL)
@@ -12,6 +13,7 @@ void ft_free_list(t_cmdline **cmd)
     }
 }
 
+// yeni bir t_cmdline yaratir
 static t_cmdline *ft_lstnew(char *line)
 {
     t_cmdline *new;
@@ -26,6 +28,7 @@ static t_cmdline *ft_lstnew(char *line)
     return (new);
 }
 
+// listenin sonuna gelen new'i ekler
 static void ft_lstadd_back(t_cmdline **lst, t_cmdline *new)
 {
     t_cmdline *ptr;
