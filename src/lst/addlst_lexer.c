@@ -7,7 +7,7 @@
  * Bitisik yazilmasina dikkat etmek
  * Bunlarida ft_check_type ile halletmeyi planliyorum
  */
-void addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size)
+void addlst_lexer(t_cmdline **cmd, t_shell **shell, size_t size)
 {
     t_cmdline *iter;
     size_t i;
@@ -16,7 +16,7 @@ void addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size)
     iter = (*cmd);
     while (size--)
     {
-        cmdline_addlst_back(cmd, cmdline_new_list(shell->input.splited_line[i], 0));
+        cmdline_addlst_back(cmd, cmdline_new_list((*shell)->input.splited_line[i], 0, shell));
         i++;
     }
 }

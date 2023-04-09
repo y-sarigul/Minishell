@@ -5,13 +5,13 @@
   *kelimeleri yaziyorum ve type'ni veriyorum.
 */
 
-t_cmdline *cmdline_new_list(char *word, int type)
+t_cmdline *cmdline_new_list(char *word, int type, t_shell **shell)
 {
   t_cmdline *new;
 
   new = (t_cmdline *)malloc(sizeof(t_cmdline));
   new -> value = word;
-  new -> type = type;
+  new -> type = ft_check_type(shell, word);
   new -> next = NULL;
   new -> prev = NULL;
   return (new);

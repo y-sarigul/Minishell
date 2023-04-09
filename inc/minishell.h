@@ -80,8 +80,8 @@ void ft_addlst_center(t_shell **shell, char *redirection);;
 
 /*********lst**********/
 void cmdline_addlst_back(t_cmdline **lst, t_cmdline *newlst);
-t_cmdline *cmdline_new_list(char *word, int type);
-void addlst_lexer(t_cmdline **cmd, t_shell *shell, size_t size);
+t_cmdline *cmdline_new_list(char *word, int type, t_shell **shell);
+void addlst_lexer(t_cmdline **cmd, t_shell **shell, size_t size);
 void ft_free_list(t_cmdline **cmd);
 
 #endif

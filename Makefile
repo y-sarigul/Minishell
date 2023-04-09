@@ -53,7 +53,6 @@ SRC	 			  := ./src/loop/mshell_loop.c\
 							 ./src/lexer/ft_space_split.c\
 							 ./src/lexer/ft_lexer_utils.c\
 							 ./src/lexer/check_operations.c\
-							 ./src/lexer/lstfunctions.c\
 							 ./src/utils/ft_utils.c\
 							 ./src/init/history.c\
 							 ./src/lst/cmdline_addlst_back.c\

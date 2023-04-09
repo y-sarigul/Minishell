@@ -2,17 +2,17 @@
 #include <stdio.h>
 
 // list unit test
-static void ft_printlst(t_shell **shell)
-{
-    t_cmdline *iter;
+// static void ft_printlst(t_shell **shell)
+// {
+//     t_cmdline *iter;
 
-    iter = (*shell) ->cmdline;
-    while (iter)
-    {
-        printf("%s\n", iter -> value);
-        iter = iter -> next;
-    }
-}
+//     iter = (*shell) ->cmdline;
+//     while (iter)
+//     {
+//         printf("%s\n", iter -> value);
+//         iter = iter -> next;
+//     }
+// }
 
 /*
  * Burasi benim ana while dongum ve burada programin dongusu soz konusudur
@@ -35,7 +35,6 @@ void ft_mshell_loop(t_shell **shell, char **envp)
         (*shell) -> input.line = readline("");
         new_history(shell, (*shell)->input.line);
         ft_space_split(shell);
-        ft_printlst(shell);
         ft_free_list(&(*shell)->cmdline);
     }
 }

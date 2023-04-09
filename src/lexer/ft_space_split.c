@@ -28,27 +28,13 @@ void ft_space_split(t_shell **shell)
     i = 0;
     if (!(*shell)->input.line)
         ft_error("I dont know command line");
+    //readlinedan gelen inputu struct input icerisine splitleyip
+    //input.splited_line olarak atiyorum
     (*shell)->input.splited_line = ft_split((*shell)->input.line, ' ');
-    // cmd.splited_line icerisine duzegun bir sekilde aktarilip aktarilmadigina bakiyorum
-    // ve burada bosluk koyuldugu zaman dogru oldugunu goruyorum
-    // while (*(*shell)->cmd.splited_line)
-    // {
-    //     printf("%s\n", *(*shell)->cmd.splited_line);
-    //     (*shell)->cmd.splited_line++;
-    // }
+    // bu gelen linin sizini buluryorum
     size = ft_buff_size((*shell)->input.splited_line);
-
-    addlst_lexer(&(*shell)->cmdline, (*shell), size);
-    //Burasini yeni ekledim sorun var gibi
-    iter = (*shell)->cmdline;
-    /*
-     * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-     * Eger minishell e gelen cmd bosluk ile basliyor ise burda segment yiyor 
-     * */
-    while (iter -> next)
-    {
-        ft_check_type(shell, iter->value);
-        iter = iter -> next;
-    }
+    // yeni bir liste olusturmak icin aldigim argumalarla beraber
+    // addlst_lexer fonksiyonuna gonderiyorum ve listemi olusturuyorum
+    addlst_lexer(&(*shell)->cmdline, shell, size);
     free((*shell)->input.splited_line);
 }
