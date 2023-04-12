@@ -9,7 +9,10 @@ void cmdline_addlst_back(t_cmdline **lst, t_cmdline *new)
     t_cmdline *iter;
 
     if (!(*lst))
+    {
         (*lst) = new;
+        (*lst)->index = 0;
+    }
     else 
     {
         iter = (*lst);
@@ -17,5 +20,6 @@ void cmdline_addlst_back(t_cmdline **lst, t_cmdline *new)
             iter = iter -> next;
         iter -> next = new;
         new -> prev = iter;
+        new -> index = (iter -> index + 1);
     }
 }

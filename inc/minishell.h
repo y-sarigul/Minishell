@@ -31,6 +31,7 @@ typedef struct s_input{
 //Burasi benim cmd.splited_line dan algim ve artik kimliklerini aktardigim yer
 //cift yonlu bagli liste ile bunlari burada tutuyorum ve hepsine birer id veriyorum
 typedef struct s_cmdline{
+    int index;
     struct s_cmdline *next;
     struct s_cmdline *prev;
     e_kind type;
@@ -72,11 +73,8 @@ void ft_error(const char *err);
 int ft_check_type(t_shell **shell, char *line);
 
 /****check_operations***/
-int check_greater_than(t_shell **shell, char **line);
-int less_than(t_shell **shell, char **line);
-
-/*******lstfonctions*************/
-void ft_addlst_center(t_shell **shell, char *redirection);;
+int check_greater_than(t_cmdline **root, char **line);
+int less_than(t_cmdline **root, char **line);
 
 /*********lst**********/
 void cmdline_addlst_back(t_cmdline **lst, t_cmdline *newlst);
