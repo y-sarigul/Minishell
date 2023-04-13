@@ -33,16 +33,11 @@ char **alphabet_parser(char *str)
 int ft_check_type(t_shell **shell, char *line)
 {
 
-    int i;
     char **buff;
-    int triger;
 
     buff = alphabet_parser(line);
 
-    i = 0;
-    triger = 0;
-    check_greater_than(shell, buff); // lstfunc
-    less_than(shell, buff);
-
+    check_greater_than(&(*shell)->cmdline, buff); // lstfunc
+    less_than(&(*shell)->cmdline, buff);
     return(0);
 }

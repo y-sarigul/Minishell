@@ -10,3 +10,6 @@ fonksiyonu ile birlestirerek atiryorum.
 2.0 
 histor kismini cift yonlu bagli listeden cikardim ve shell'in icerisindeki char **history
 kismina yazdim. BUFFSIZE asdigi durumu kontrol edilmiyor ve leak kontorulu yapilmamistir(y-sarigul)
+
+2.8 ile check fonksiyonlarinda ayni zamanda atama yapacagim dosya ismi check_operations.c
+

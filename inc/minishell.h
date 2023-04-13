@@ -21,22 +21,22 @@ typedef enum e_kind {
     QUOTE = 8,
 } e_kind;
 
+// cmd ile readline ile donen yazilari tutuyorum ve 
+// bunlari splitliyorum ve onuda ** icerisinde tutuyorum
+typedef struct s_input{
+    char *line;
+    char **splited_line;
+} t_input;
+
 //Burasi benim cmd.splited_line dan algim ve artik kimliklerini aktardigim yer
 //cift yonlu bagli liste ile bunlari burada tutuyorum ve hepsine birer id veriyorum
 typedef struct s_cmdline{
+    int index;
     struct s_cmdline *next;
     struct s_cmdline *prev;
     e_kind type;
     char *value;
 } t_cmdline;
-
-
-// cmd ile readline ile donen yazilari tutuyorum ve 
-// bunlari splitliyorum ve onuda ** icerisinde tutuyorum
-typedef struct s_cmd{
-    char *line;
-    char **splited_line;
-} t_cmd;
 
 // pwd enviroment ini tutan structim
 typedef struct s_pwd{
@@ -46,7 +46,7 @@ typedef struct s_pwd{
 // Ana struct yapim
 typedef struct s_shell{
     t_pwd pwd;
-    t_cmd cmd;
+    t_input input;
     t_cmdline *cmdline;
     char **history;
 } t_shell;
@@ -64,7 +64,6 @@ void new_history(t_shell **shell, char *line);
 
 /******lexer**********/
 void ft_space_split(t_shell **shell);
-void ft_addlst_lexer(t_shell **shell, size_t size);
 char **alphabet_parser(char *str);
 
 /******utils**********/
@@ -74,10 +73,13 @@ void ft_error(const char *err);
 int ft_check_type(t_shell **shell, char *line);
 
 /****check_operations***/
-int check_greater_than(t_shell **shell, char **line);
-int less_than(t_shell **shell, char **line);
+int check_greater_than(t_cmdline **root, char **line);
+int less_than(t_cmdline **root, char **line);
 
-/*******lstfonctions*************/
-void ft_addlst_center(t_shell **shell, char *redirection);;
+/*********lst**********/
+void cmdline_addlst_back(t_cmdline **lst, t_cmdline *newlst);
+t_cmdline *cmdline_new_list(char *word, int type, t_shell **shell);
+void addlst_lexer(t_cmdline **cmd, t_shell **shell, size_t size);
+void ft_free_list(t_cmdline **cmd);
 
 #endif
