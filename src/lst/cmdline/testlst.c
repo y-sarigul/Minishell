@@ -1,5 +1,9 @@
 #include "../../../inc/minishell.h"
 
+/*
+ * Test fonksiyonlarim
+*/
+
 void c_printlst_next(t_cmdline *root)
 {
     if (root == NULL)

@@ -32,11 +32,11 @@ void mini_loop();
 void parser(t_shell **shell);
 
 /* Lst */
-    /* -> cmdlin */
-    void c_addlst_back(t_cmdline **root, t_cmdline *newlst);
-    t_cmdline *c_newlst(char *word, int index);
-    /* -> testlst */
-    void c_printlst_next(t_cmdline *root);
-    void c_printlst_prev(t_cmdline *root);
+/* -> cmdlin */
+void c_addlst_back(t_cmdline **root, t_cmdline *newlst);
+t_cmdline *c_newlst(char *word, int index);
+/* -> testlst */
+void c_printlst_next(t_cmdline *root);
+void c_printlst_prev(t_cmdline *root);
 
 #endif // !MINISHELL_H

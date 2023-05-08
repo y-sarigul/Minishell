@@ -1,5 +1,10 @@
 #include "../../inc/minishell.h"
 
+/*
+ * Burada radlinedan alinan indexleri cift yonlu bagli
+ * liste icerisine ekleniyor
+*/
+
 void parser(t_shell **shell)
 {
     int i;

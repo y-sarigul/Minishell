@@ -1,5 +1,9 @@
 #include "../../../inc/minishell.h"
 
+/*
+ * Yeni bir liste olusturuluyor
+*/
+
 t_cmdline *c_newlst(char *word, int index)
 {
     t_cmdline *newlst;

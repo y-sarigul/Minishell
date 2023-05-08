@@ -1,5 +1,11 @@
 #include "../../inc/minishell.h"
 
+/*
+ * Burasi ana dongumu olusturuyor. 
+ * readline splitlenmis bir sekilde alinarak shell icerisindeki shell->input.line
+ * icerisine atiliyor
+*/
+
 void mini_loop()
 {
     t_shell *shell;
