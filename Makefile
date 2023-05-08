@@ -48,17 +48,11 @@ LIBFT				:= ./lib/libft/ft_atoi.c\
 							 ./lib/libft/ft_tolower.c\
 							 ./lib/libft/ft_toupper.c\
 
-SRC	 			  := ./src/loop/mshell_loop.c\
-							 ./src/parse/ft_parse_pwd.c\
-							 ./src/lexer/ft_space_split.c\
-							 ./src/lexer/ft_lexer_utils.c\
-							 ./src/lexer/check_operations.c\
-							 ./src/utils/ft_utils.c\
-							 ./src/init/history.c\
-							 ./src/lst/cmdline_addlst_back.c\
-							 ./src/lst/cmdline_new_lst.c\
-							 ./src/lst/addlst_lexer.c\
-							 ./src/lst/free_list.c\
+SRC	 			  := ./src/loop/mini_loop.c\
+							 ./src/parser/parser.c\
+							 ./src/lst/cmdline/c_addlst_back.c\
+							 ./src/lst/cmdline/c_newlst.c\
+							 ./src/lst/cmdline/testlst.c\
 
 LREADLINE = -L${HOME}/readline/8.2.1/lib -lreadline
 
